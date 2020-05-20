@@ -42,7 +42,7 @@ public class ReqResClientTest {
         String string = IOUtil.readLines(resourceAsStream).stream().collect(Collectors.joining(""));
         mockRes.withBody(string);
         wireMockServer.start();
-        WireMock.configureFor("localhost", 7080);
+        WireMock.configureFor("localhost", wireMockServer.port());
         WireMock.stubFor(WireMock.get("/api/v1/employees").willReturn(mockRes)); /*use get or post*/
     }
 
